@@ -30,10 +30,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 export const metadata: Metadata = {
-  title: "Sonia Tlev - Programmes de fitness",
+  title: "Sonia Tlev - Top Body challenge",
   description: "Transformez votre corps et votre vie avec les programmes de fitness de Sonia Tlev",
   openGraph: {
-    title: "Sonia Tlev - Programmes de fitness",
+    title: "Sonia Tlev - Top Body challenge",
     description: "Transformez votre corps et votre vie avec les programmes de fitness de Sonia Tlev",
     images: ["/images/og-image.png"],
   },
