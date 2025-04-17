@@ -45,12 +45,15 @@ export default function ProgrammesSportifs() {
 
   const handleScroll = useCallback(() => {
     if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
       setShowLeftArrow(scrollLeft > 0);
       setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
 
       // Calculer l'index actif basé sur le défilement
-      const cardWidth = scrollContainerRef.current.querySelector(".card-item")?.clientWidth || 0;
+      const cardWidth =
+        scrollContainerRef.current.querySelector(".card-item")?.clientWidth ||
+        0;
       const newIndex = Math.round(scrollLeft / cardWidth);
       if (newIndex !== activeIndex) {
         setActiveIndex(newIndex);
@@ -84,21 +87,47 @@ export default function ProgrammesSportifs() {
     <section className="py-16">
       <div className="px-4 mx-auto max-w-7xl">
         <div className="mb-8 text-center">
-          <h2 className="mb-4 text-3xl font-bold font-outfit md:text-4xl">Nos programmes sportifs</h2>
-          <p className="max-w-3xl mx-auto text-gray-700">Atteignez vos objectifs avec des programmes sur mesure. Choisissez parmi de nombreux coachs et recettes, cumulez des points, et profitez des vidéos hors ligne. Toujours là pour vous motiver et vous soutenir !</p>
+          <h2 className="mb-4 text-3xl font-bold font-outfit md:text-4xl">
+            Nos programmes sportifs
+          </h2>
+          <p className="max-w-3xl mx-auto text-gray-700">
+            Atteignez vos objectifs avec des programmes sur mesure. Choisissez
+            parmi de nombreux coachs et recettes, cumulez des points, et
+            profitez des vidéos hors ligne. Toujours là pour vous motiver et
+            vous soutenir !
+          </p>
         </div>
 
         <div className="relative">
-          <div ref={scrollContainerRef} className="flex gap-4 pb-6 overflow-x-auto scrollbar-hide" onScroll={handleScroll}>
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-4 pb-6 overflow-x-auto scrollbar-hide"
+            onScroll={handleScroll}
+          >
             {programmes.map((programme) => (
-              <Card key={programme.id} className="card-item min-w-[280px] flex-shrink-0 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <Card
+                key={programme.id}
+                className="card-item min-w-[280px] flex-shrink-0 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
                 <CardContent className="p-0">
                   <div className="relative h-[360px] w-full">
-                    <Image src={programme.image} alt={programme.title} width={280} height={360} className="object-cover w-full h-full" />
+                    <Image
+                      src={programme.image}
+                      alt={programme.title}
+                      width={280}
+                      height={360}
+                      className="object-cover w-full h-full"
+                    />
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-gradient-to-t from-black/80 to-transparent">
-                      <h3 className="mb-2 text-xl font-bold">{programme.title}</h3>
-                      <p className="mb-4 text-sm text-gray-200">{programme.description}</p>
-                      <button className="px-4 py-2 text-sm font-medium text-black bg-white rounded hover:bg-gray-100">Je m&apos;inscris</button>
+                      <h3 className="mb-2 text-xl font-bold">
+                        {programme.title}
+                      </h3>
+                      <p className="mb-4 text-sm text-gray-200">
+                        {programme.description}
+                      </p>
+                      <button className="px-4 py-2 text-sm font-medium text-black bg-white rounded hover:bg-gray-100">
+                        Je m&apos;inscris
+                      </button>
                     </div>
                   </div>
                 </CardContent>
@@ -116,7 +145,8 @@ export default function ProgrammesSportifs() {
                   onClick={() => {
                     if (scrollContainerRef.current) {
                       const container = scrollContainerRef.current;
-                      const cardWidth = container.querySelector(".card-item")?.clientWidth || 0;
+                      const cardWidth =
+                        container.querySelector(".card-item")?.clientWidth || 0;
                       container.scrollTo({
                         left: cardWidth * index,
                         behavior: "smooth",
@@ -130,11 +160,31 @@ export default function ProgrammesSportifs() {
             </div>
 
             <div className="flex space-x-2">
-              <button onClick={() => scrollTo("left")} className={`${!showLeftArrow && "opacity-50 cursor-not-allowed"}`} disabled={!showLeftArrow} aria-label="Précédent">
-                <Image src="/images/LeftArrow.svg" alt="Précédent" width={40} height={40} />
+              <button
+                onClick={() => scrollTo("left")}
+                className={`${!showLeftArrow && "opacity-50 cursor-not-allowed"}`}
+                disabled={!showLeftArrow}
+                aria-label="Précédent"
+              >
+                <Image
+                  src="/images/LeftArrow.svg"
+                  alt="Précédent"
+                  width={40}
+                  height={40}
+                />
               </button>
-              <button onClick={() => scrollTo("right")} className={`${!showRightArrow && "opacity-50 cursor-not-allowed"}`} disabled={!showRightArrow} aria-label="Suivant">
-                <Image src="/images/RightArrow.svg" alt="Suivant" width={40} height={40} />
+              <button
+                onClick={() => scrollTo("right")}
+                className={`${!showRightArrow && "opacity-50 cursor-not-allowed"}`}
+                disabled={!showRightArrow}
+                aria-label="Suivant"
+              >
+                <Image
+                  src="/images/RightArrow.svg"
+                  alt="Suivant"
+                  width={40}
+                  height={40}
+                />
               </button>
             </div>
           </div>

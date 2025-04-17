@@ -10,7 +10,12 @@ interface RevealProps {
   direction?: "up" | "down" | "left" | "right";
 }
 
-export function Reveal({ children, className, delay = 0, direction = "up" }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  direction = "up",
+}: RevealProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -30,7 +35,7 @@ export function Reveal({ children, className, delay = 0, direction = "up" }: Rev
           }, delay);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     const currentRef = ref.current;
@@ -46,7 +51,16 @@ export function Reveal({ children, className, delay = 0, direction = "up" }: Rev
   }, [delay]);
 
   return (
-    <div ref={ref} className={cn("transition-all duration-700 ease-out", isVisible ? "opacity-100 transform-none" : `opacity-0 ${directionClasses[direction]}`, className)}>
+    <div
+      ref={ref}
+      className={cn(
+        "transition-all duration-700 ease-out",
+        isVisible
+          ? "opacity-100 transform-none"
+          : `opacity-0 ${directionClasses[direction]}`,
+        className,
+      )}
+    >
       {children}
     </div>
   );
