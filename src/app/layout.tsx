@@ -17,11 +17,7 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${outfit.variable} ${roboto.variable}`}>
       <body className="relative min-h-screen text-black bg-white font-roboto">
@@ -34,13 +30,15 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
   title: "Sonia Tlev - Top Body challenge",
-  description:
-    "Transformez votre corps et votre vie avec les programmes de fitness de Sonia Tlev",
+  description: "Transformez votre corps et votre vie avec les programmes de fitness de Sonia Tlev",
   openGraph: {
     title: "Sonia Tlev - Top Body challenge",
-    description:
-      "Transformez votre corps et votre vie avec les programmes de fitness de Sonia Tlev",
+    description: "Transformez votre corps et votre vie avec les programmes de fitness de Sonia Tlev",
     images: ["/images/og-image.png"],
   },
 };
